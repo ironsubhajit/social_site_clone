@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'accounts',
     'groups.apps.GroupsConfig',
+    'post.apps.PostConfig',
 ]
 
 MIDDLEWARE = [
