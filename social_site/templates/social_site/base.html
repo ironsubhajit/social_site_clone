@@ -22,103 +22,100 @@
   <body>
     <!-- nav bar -->
     <nav class="navbar navbar-expand-lg static-top navbar-dark bg-dark">
-      <!-- brand icon -->
-      <a class="navbar-brand active" href="{% url 'home' %}">
-        <h1>Social</h1>
-      </a>
+      <div class="container">
+        <!-- brand icon -->
+        <a class="navbar-brand active" href="{% url 'home' %}">
+          <h1>Social</h1>
+        </a>
 
-      <!-- toggle button for small sized window -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
+        <!-- toggle button for small sized window -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!-- center options -->
-        <ul class="navbar-nav nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Post</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Groups</a>
-          </li>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- center options -->
+          <ul class="navbar-nav nav mx-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Create Groups</a>
+            </li>
+            {% endif %}
+            <!-- end if  -->
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Groups</a>
+            </li>
+          </ul>
 
           {% if user.is_authenticated %}
-          <li class="nav-item">
-            <a class="nav-link" href="#">Create Groups</a>
-          </li>
-
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Create Groups</a>
-          </li>
-          {% endif %}
-          <!-- end if  -->
-        </ul>
-
-        {% if user.is_authenticated %}
-        <!-- right align options -->
-        <ul class="navbar-nav my-2 my-lg-0">
-          <!-- loggedin user info dropdown -->
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link"
-              href="#"
-              id="navbarDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <button
-                type="button"
-                class="btn btn-outline-info dropdown-toggle"
-              >
-                {{ user.username }}
-              </button>
-            </a>
-            <div
-              class="dropdown-menu bg-dark mx-n7"
-              aria-labelledby="navbarDropdown"
-            >
-              <a class="dropdown-item text-info" href="#">Projects</a>
-              <a class="dropdown-item text-info" href="#">Account Info</a>
+          <!-- right align options -->
+          <ul class="navbar-nav my-2 my-lg-0">
+            <!-- loggedin user info dropdown -->
+            <li class="nav-item dropdown">
               <a
-                class="dropdown-item text-info"
-                href="{% url 'accounts:logout' %}"
-                >Log Out</a
+                class="nav-link"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
               >
-            </div>
-          </li>
-        </ul>
-        {% else %}
-        <!-- loggedin user optins-->
-        <ul class="navbar-nav my-2 my-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:login' %}"
-              ><button type="button" class="btn btn-outline-warning">
-                Log In
-              </button></a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:signup' %}"
-              ><button type="button" class="btn btn-outline-warning">
-                Register
-              </button></a
-            >
-          </li>
-        </ul>
-        {% endif %}
+                <button
+                  type="button"
+                  class="btn btn-outline-info dropdown-toggle"
+                >
+                  {{ user.username }}
+                </button>
+              </a>
+              <div
+                class="dropdown-menu bg-dark mx-n7"
+                aria-labelledby="navbarDropdown"
+              >
+                <a class="dropdown-item text-info" href="#">Projects</a>
+                <a class="dropdown-item text-info" href="#">Account Info</a>
+                <a
+                  class="dropdown-item text-info"
+                  href="{% url 'accounts:logout' %}"
+                  >Log Out</a
+                >
+              </div>
+            </li>
+          </ul>
+          {% else %}
+          <!-- loggedin user optins-->
+          <ul class="navbar-nav my-2 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:login' %}"
+                ><button type="button" class="btn btn-outline-warning">
+                  Log In
+                </button></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'accounts:signup' %}"
+                ><button type="button" class="btn btn-outline-warning">
+                  Register
+                </button></a
+              >
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+        <!-- end toggle options -->
       </div>
-      <!-- end toggle options -->
     </nav>
     {% block content %} {% endblock %}
 
