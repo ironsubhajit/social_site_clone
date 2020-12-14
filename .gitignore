@@ -1,4 +1,5 @@
 .idea
+.vs
 **/**/__pycache__
 mark_10_venv_social
 .env
