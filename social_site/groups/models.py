@@ -28,6 +28,9 @@ class Group(models.Model):
         self.slug = slugify(self.name)
         self.description_html = misaka.html(self.description)
         super().save(*args, **kwargs)
+    
+    def get_absolute_url(self):
+        return reverse("groups:single", kwargs={"slug": self.slug})
 
 
 class GroupMember(models.Model):
