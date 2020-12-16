@@ -23,6 +23,11 @@ class Group(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        self.description_html = misaka.html(self.description)
+        super().save(*args, **kwargs)
 
 
 class GroupMember(models.Model):
