@@ -18,3 +18,6 @@ class CreateGroup(LoginRequiredMixin, generic.CreateView):
 class SingleGroup(generic.DetailView):
     model = Group
 
+
+class ListGroups(generic.ListView):
+    model = Group
