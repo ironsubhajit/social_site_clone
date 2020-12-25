@@ -14,3 +14,7 @@ class CreateGroup(LoginRequiredMixin, generic.CreateView):
     fields = ['name', 'description']
     model = Group
 
+
+class SingleGroup(generic.DetailView):
+    model = Group
+
