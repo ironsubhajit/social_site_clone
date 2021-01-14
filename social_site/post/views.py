@@ -48,3 +48,14 @@ class PostDetail(SelectRelatedMixin, generic.DetailView):
             user__username__iexact=self.kwargs.get("username")
         )
 
+
+class CreatePost(LoginRequiredMixin, SelectRelatedMixin, generic.CreateView):
+    fields = ('message', 'group')
+    model = models.Post
+    
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+    
