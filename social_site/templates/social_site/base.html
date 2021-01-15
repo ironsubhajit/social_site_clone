@@ -46,16 +46,16 @@
           <ul class="navbar-nav nav mx-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="#">Post</a>
+              <a class="nav-link" href="{% url 'posts:all' %}">Post</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Create Groups</a>
+              <a class="nav-link" href="{% url 'groups:create' %}">Create Groups</a>
             </li>
             {% endif %}
             <!-- end if  -->
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Groups</a>
+              <a class="nav-link" href="{% url 'groups:all' %}">Groups</a>
             </li>
           </ul>
 
