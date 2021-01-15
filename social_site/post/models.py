@@ -4,7 +4,7 @@ from django.conf import settings
 
 import misaka
 
-from ..groups.models import Group
+from groups.models import Group
 
 from django.contrib.auth import get_user_model
 
