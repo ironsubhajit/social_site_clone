@@ -16,14 +16,17 @@ from  .models import Group, GroupMember
 class CreateGroup(LoginRequiredMixin, generic.CreateView):
     fields = ['name', 'description']
     model = Group
+    template_name = 'groups/groups_form.html'
 
 
 class SingleGroup(generic.DetailView):
     model = Group
+    template_name = 'groups/groups_detail.html'
 
 
 class ListGroups(generic.ListView):
     model = Group
+    template_name = 'groups/groups_list'
 
 
 class JoinGroup(LoginRequiredMixin, generic.RedirectView):
